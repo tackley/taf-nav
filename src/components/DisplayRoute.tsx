@@ -11,10 +11,20 @@ import { useEffect } from "react";
 import { findFastestRoutes, findRoutes } from "../custom_routing";
 import { PlaceName } from "../raw_data";
 import { LocationCity } from "@material-ui/icons";
+import { EdgeAttributes } from "../graph";
 
 interface Props {
   from: string | null;
   to: string | null;
+}
+
+function transportMode(m: EdgeAttributes['type']): string {
+  switch (m) {
+    case "railway": return "in minecart";
+    case "roadway:sprint": return "sprinting";
+    case "roadway:walk": return "walking";
+    case "waterway": return "boating";
+  }
 }
 
 export const DisplayRoute = (props: Props) => {
@@ -57,7 +67,7 @@ export const DisplayRoute = (props: Props) => {
           <>
             <ListItem key={`${idx}-route`}>
               <ListItemText
-                primary={`${r.durationSecs} seconds using ${r.type} to`}
+                primary={`${r.durationSecs} seconds ${transportMode(r.type)} to...`}
               />
             </ListItem>
             <ListItem key={`${idx}-loc`}>
