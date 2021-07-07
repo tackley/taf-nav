@@ -46,6 +46,10 @@ export const DisplayRoute = (props: Props) => {
     return <Typography>No route found</Typography>;
   }
 
+  if (from === to) {
+    return <Typography variant="h2">Stand still!</Typography>
+  }
+
   return (
     <>
       <Typography>
