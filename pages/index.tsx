@@ -30,7 +30,8 @@ export default function Home() {
     <>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6">The TaF Nav</Typography>
+          <Typography variant="h6" style={{flexGrow: 1}}>The TaF Nav</Typography>
+          <Typography variant="h6" style={{color: "blue"}} >Visit Bistrogg</Typography>
         </Toolbar>
       </AppBar>
       <Container maxWidth="lg">
@@ -43,7 +44,7 @@ export default function Home() {
             </Grid>
             <Grid item xs>
               <ContentBox title="To">
-                <CityList selected={to} onSelectionChange={setTo}></CityList>
+                <CityList selected={to} onSelectionChange={setTo} />
               </ContentBox>
             </Grid>
             <Grid item xs={5}>
