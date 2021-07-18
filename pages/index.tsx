@@ -10,6 +10,8 @@ import {
 import React, { useState } from "react";
 import { CityList } from "../src/components/CityList";
 import { DisplayRoute } from "../src/components/DisplayRoute";
+import { Toggles, ToggleSwitches } from "../src/components/Toggles";
+import { TransportType } from "../src/lib/transport_modes";
 
 const ContentBox: React.FC<{ title: string }> = (props) => {
   return (
@@ -22,16 +24,34 @@ const ContentBox: React.FC<{ title: string }> = (props) => {
   );
 };
 
+const defaultSwitchState: ToggleSwitches = {
+  "roadway:sprint": true,
+  "roadway:walk": true,
+  railway: true,
+  waterway: true,
+};
+
 export default function Home() {
   const [from, setFrom] = useState<string | null>(null);
   const [to, setTo] = useState<string | null>(null);
+  const [switches, setSwitches] = useState<ToggleSwitches>(defaultSwitchState);
 
+  const toggleSwitch = (t: TransportType) => {
+    setSwitches(s => ({
+      ...s,
+      [t]: !s[t]
+    }));
+  }
   return (
     <>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" style={{flexGrow: 1}}>The TaF Nav</Typography>
-          <Typography variant="h6" style={{color: "blue"}} >Visit Bistrogg</Typography>
+          <Typography variant="h6" style={{ flexGrow: 1 }}>
+            The TaF Nav
+          </Typography>
+          <Typography variant="h6" style={{ color: "blue" }}>
+            Visit Bistrogg
+          </Typography>
         </Toolbar>
       </AppBar>
       <Container maxWidth="lg">
@@ -49,7 +69,8 @@ export default function Home() {
             </Grid>
             <Grid item xs={5}>
               <ContentBox title="Route">
-                <DisplayRoute from={from} to={to} />
+                <Toggles switches={switches} toggle={toggleSwitch} />
+                <DisplayRoute from={from} to={to} toggles={switches} />
               </ContentBox>
             </Grid>
           </Grid>

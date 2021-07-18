@@ -1,4 +1,5 @@
 import Graph from "graphology";
+import { ToggleSwitches } from "./components/Toggles";
 import {
   RAILWAYS,
   ROADWAYS,
@@ -19,7 +20,7 @@ export interface EdgeAttributes {
 
 export type RouteGraph = Graph<LocationAttributes, EdgeAttributes>;
 
-export function buildGraph(): RouteGraph {
+export function buildGraph(toggles: ToggleSwitches): RouteGraph {
   const g = new Graph<LocationAttributes, EdgeAttributes>({
     type: "undirected",
     multi: true,
@@ -34,22 +35,31 @@ export function buildGraph(): RouteGraph {
   });
 
   // RAILWAYS
-  RAILWAYS.forEach(([a, b, durationSecs]) => {
-    g.addEdge(a, b, { type: "railway", durationSecs: durationSecs });
-  });
-
-  // WATERWAYS
-  WATERWAYS.forEach(([a, b, durationSecs]) => {
-    g.addEdge(a, b, { type: "waterway", durationSecs: durationSecs });
-  });
-
-  // WATERWAYS
-  ROADWAYS.forEach(([a, b, walkDurationSecs, sprintDurationSecs]) => {
-    g.addEdge(a, b, { type: "roadway:walk", durationSecs: walkDurationSecs });
-    g.addEdge(a, b, {
-      type: "roadway:sprint",
-      durationSecs: sprintDurationSecs,
+  if (toggles.railway) {
+    RAILWAYS.forEach(([a, b, durationSecs]) => {
+      g.addEdge(a, b, { type: "railway", durationSecs: durationSecs });
     });
+  }
+
+  // WATERWAYS
+  if (toggles.waterway) {
+    WATERWAYS.forEach(([a, b, durationSecs]) => {
+      g.addEdge(a, b, { type: "waterway", durationSecs: durationSecs });
+    });
+  }
+
+  // ROADWAYS
+  ROADWAYS.forEach(([a, b, walkDurationSecs, sprintDurationSecs]) => {
+    if (toggles["roadway:walk"]) {
+      g.addEdge(a, b, { type: "roadway:walk", durationSecs: walkDurationSecs });
+    }
+
+    if (toggles["roadway:sprint"]) {
+      g.addEdge(a, b, {
+        type: "roadway:sprint",
+        durationSecs: sprintDurationSecs,
+      });
+    }
   });
 
   return g;

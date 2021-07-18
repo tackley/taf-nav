@@ -59,9 +59,9 @@ export const WATERWAYS: Connection[] = [
   ["East Crossloop Canal", "Crossloop", 1.96],
   ["Crossloop", "Abandoned Savanna Village", 27.84],
   ["Abandoned Savanna Village", "Gwendolyn West", 24.73],
-  ["Gwendolyn West", "Gwendolyn", 5.60],
+  ["Gwendolyn West", "Gwendolyn", 5.6],
   ["West Crossloop Canal", "Venice mini", 23.93],
-  ["Venice mini", "Deep S.W. Savanna Village", 69.60],
+  ["Venice mini", "Deep S.W. Savanna Village", 69.6],
 ];
 
 type RoadConnection = [

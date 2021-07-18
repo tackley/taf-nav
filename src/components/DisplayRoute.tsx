@@ -7,34 +7,27 @@ import {
 } from "@material-ui/core";
 import _ from "lodash";
 import React, { useMemo } from "react";
-import { useEffect } from "react";
-import { findFastestRoutes, findRoutes } from "../custom_routing";
+import { findRoutes, findRoutesWithFilter } from "../custom_routing";
 import { PlaceName } from "../raw_data";
 import { LocationCity } from "@material-ui/icons";
 import { EdgeAttributes } from "../graph";
+import { transportMode } from "../lib/transport_modes";
+import { ToggleSwitches } from "./Toggles";
 
 interface Props {
   from: string | null;
   to: string | null;
-}
-
-function transportMode(m: EdgeAttributes['type']): string {
-  switch (m) {
-    case "railway": return "in minecart";
-    case "roadway:sprint": return "sprinting";
-    case "roadway:walk": return "walking";
-    case "waterway": return "boating";
-  }
+  toggles: ToggleSwitches;
 }
 
 export const DisplayRoute = (props: Props) => {
-  const { from, to } = props;
+  const { from, to, toggles} = props;
 
   const result = useMemo(() => {
     console.log("useMemo running");
     if (!from) return null;
-    return findRoutes(from as PlaceName);
-  }, [from]);
+    return findRoutesWithFilter(from as PlaceName, toggles);
+  }, [from, toggles]);
 
   if (!from || !to || !result) {
     return <Typography>Please select from and to</Typography>;
@@ -47,7 +40,7 @@ export const DisplayRoute = (props: Props) => {
   }
 
   if (from === to) {
-    return <Typography variant="h2">Stand still!</Typography>
+    return <Typography variant="h2">Stand still!</Typography>;
   }
 
   return (
@@ -71,7 +64,9 @@ export const DisplayRoute = (props: Props) => {
           <>
             <ListItem key={`${idx}-route`}>
               <ListItemText
-                primary={`${r.durationSecs} seconds ${transportMode(r.type)} to...`}
+                primary={`${r.durationSecs} seconds ${transportMode(
+                  r.type
+                )} to...`}
               />
             </ListItem>
             <ListItem key={`${idx}-loc`}>

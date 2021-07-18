@@ -1,6 +1,7 @@
 import _ from "lodash";
+import { ToggleSwitches } from "./components/Toggles";
 import { buildGraph, EdgeAttributes, RouteGraph } from "./graph";
-import { PlaceName, RAILWAYS, SETTLEMENTS } from "./raw_data";
+import { PlaceName } from "./raw_data";
 
 type NodeIdentifier = string;
 
@@ -14,15 +15,28 @@ export interface BestRoute {
   totalDurationSecs: number;
 }
 
-export function findRoutes(start: PlaceName) {
-  const g = buildGraph();
+export function findRoutesWithFilter(start: PlaceName, toggles: ToggleSwitches) {
+  const g = buildGraph(toggles);
   return findFastestRoutes(g, start);
 }
+
+export function findRoutes(start: PlaceName) {
+  return findRoutesWithFilter(start, {
+    "roadway:sprint": true,
+    "roadway:walk": true,
+    railway: true,
+    waterway: true
+  })
+}
+
 export function findFastestRoutes(graph: RouteGraph, start: PlaceName) {
   const dist = new Map<NodeIdentifier, BestRoute>(
     graph
       .nodes()
-      .map((n) => [n, { route: [], totalDurationSecs: n === start ? 0 : Infinity }])
+      .map((n) => [
+        n,
+        { route: [], totalDurationSecs: n === start ? 0 : Infinity },
+      ])
   );
 
   let q = graph.nodes();
@@ -38,7 +52,7 @@ export function findFastestRoutes(graph: RouteGraph, start: PlaceName) {
       const edge: Edge = {
         from: nodeToCheck,
         to: target,
-        ...attr
+        ...attr,
       };
       const altCost = bestRouteToV.totalDurationSecs + attr.durationSecs;
       if (altCost < dist.get(target)!.totalDurationSecs) {
@@ -53,5 +67,3 @@ export function findFastestRoutes(graph: RouteGraph, start: PlaceName) {
 
   return dist;
 }
-
-
