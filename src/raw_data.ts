@@ -83,4 +83,5 @@ export const ROADWAYS: RoadConnection[] = [
   ["Road Centre far West", "Crossloop", 66.87, 49.26],
   ["Road Centre far West", "Gwendolyn West", 23.53, 16.61],
   ["Gwendolyn West", "Gwendolyn", 24.89, 18.28],
+  ["Alte City North", "Alte City South/Interchange", 22.17, 17.44],
 ];
