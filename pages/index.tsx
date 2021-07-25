@@ -6,12 +6,15 @@ import {
   Paper,
   Toolbar,
   Typography,
+  makeStyles,
 } from "@material-ui/core";
 import React, { useState } from "react";
 import { CityList } from "../src/components/CityList";
 import { DisplayRoute } from "../src/components/DisplayRoute";
 import { Toggles, ToggleSwitches } from "../src/components/Toggles";
 import { TransportType } from "../src/lib/transport_modes";
+import Image from "next/image";
+import MapImage from "../src/assets/map.png";
 
 const ContentBox: React.FC<{ title: string }> = (props) => {
   return (
@@ -31,19 +34,33 @@ const defaultSwitchState: ToggleSwitches = {
   waterway: true,
 };
 
+const useStyles = makeStyles((theme) => ({
+  bkg: {
+    position: "absolute",
+    zIndex: -5,
+    opacity: 0.5,
+  },
+}));
+
 export default function Home() {
   const [from, setFrom] = useState<string | null>(null);
   const [to, setTo] = useState<string | null>(null);
   const [switches, setSwitches] = useState<ToggleSwitches>(defaultSwitchState);
 
   const toggleSwitch = (t: TransportType) => {
-    setSwitches(s => ({
+    setSwitches((s) => ({
       ...s,
-      [t]: !s[t]
+      [t]: !s[t],
     }));
-  }
+  };
+
+  const classes = useStyles();
+
   return (
     <>
+      <div className={classes.bkg}>
+        <Image src={MapImage} alt="background map" />
+      </div>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" style={{ flexGrow: 1 }}>
