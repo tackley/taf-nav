@@ -16,7 +16,7 @@
     "@types/lodash": "^4.14.170",
     "graphology": "^0.20.0",
     "graphology-types": "^0.19.2",
-    "immer": "^9.0.5",
+    "immer": "^9.0.6",
     "lodash": "^4.17.21",
     "next": "11.0.1",
     "react": "17.0.2",
