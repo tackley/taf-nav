@@ -75,7 +75,7 @@ export default function Home() {
             The TaF Nav
           </Typography>
           <Typography variant="h6" style={{ color: "blue" }}>
-            Visit Bistrogg
+            Visit Bistro99
           </Typography>
         </Toolbar>
       </AppBar>
