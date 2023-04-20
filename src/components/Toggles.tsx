@@ -6,7 +6,7 @@ import {
   FormHelperText,
   FormLabel,
   Switch,
-} from "@material-ui/core";
+} from "@mui/material";
 import React from "react";
 import { transportMode, TransportType } from "../lib/transport_modes";
 

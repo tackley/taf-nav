@@ -4,12 +4,12 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import _ from "lodash";
 import React, { useMemo } from "react";
 import { findRoutes, findRoutesWithFilter } from "../custom_routing";
 import { PlaceName } from "../raw_data";
-import { LocationCity } from "@material-ui/icons";
+import { LocationCity } from "@mui/icons-material";
 import { EdgeAttributes } from "../graph";
 import { transportMode } from "../lib/transport_modes";
 import { ToggleSwitches } from "./Toggles";

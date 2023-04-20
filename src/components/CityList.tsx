@@ -1,6 +1,6 @@
-import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import { List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import React from "react";
-import LocationCityIcon from "@material-ui/icons/LocationCity";
+import LocationCityIcon from "@mui/icons-material/LocationCity";
 
 import { SETTLEMENTS } from "../raw_data";
 
