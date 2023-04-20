@@ -22,7 +22,9 @@ rgba(255, 255, 255, 0.08);
 -webkit-backdrop-filter: blur(32px);
 */
 
-const ContentBox: React.FC<{ title: string }> = (props) => {
+const ContentBox: React.FC<{ title: string; children: React.ReactNode }> = (
+  props
+) => {
   return (
     <Paper
       sx={{

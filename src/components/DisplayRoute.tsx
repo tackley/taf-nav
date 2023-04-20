@@ -21,10 +21,9 @@ interface Props {
 }
 
 export const DisplayRoute = (props: Props) => {
-  const { from, to, toggles} = props;
+  const { from, to, toggles } = props;
 
   const result = useMemo(() => {
-    console.log("useMemo running");
     if (!from) return null;
     return findRoutesWithFilter(from as PlaceName, toggles);
   }, [from, toggles]);
