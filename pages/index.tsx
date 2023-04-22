@@ -44,10 +44,6 @@ const defaultSwitchState: ToggleSwitches = {
   roadway: true,
   railway: true,
   boatway: true,
-  sprinting: true,
-  overworld: true,
-  nether: true,
-  end: true
 };
 
 export default function Home() {
@@ -64,8 +60,21 @@ export default function Home() {
 
   return (
     <>
-      <Box sx={{ position: "absolute", zIndex: -5, opacity: 0.5, height: "100vh", width: "100vw" }}>
-        <Image fill src={MapImage} alt="background map" style={{objectFit:"contain"}}/>
+      <Box
+        sx={{
+          position: "absolute",
+          zIndex: -5,
+          opacity: 0.5,
+          height: "100vh",
+          width: "100vw",
+        }}
+      >
+        <Image
+          fill
+          src={MapImage}
+          alt="background map"
+          style={{ objectFit: "contain" }}
+        />
       </Box>
       <AppBar
         position="sticky"

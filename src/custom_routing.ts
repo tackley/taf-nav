@@ -15,7 +15,10 @@ export interface BestRoute {
   totalDurationSecs: number;
 }
 
-export function findRoutesWithFilter(start: PlaceName, toggles: ToggleSwitches) {
+export function findRoutesWithFilter(
+  start: PlaceName,
+  toggles: ToggleSwitches
+) {
   const g = buildGraph(toggles);
   return findFastestRoutes(g, start);
 }
@@ -25,11 +28,7 @@ export function findRoutes(start: PlaceName) {
     roadway: true,
     railway: true,
     boatway: true,
-    sprinting: true,
-    overworld: true,
-    nether: true,
-    end: true
-  })
+  });
 }
 
 export function findFastestRoutes(graph: RouteGraph, start: PlaceName) {
