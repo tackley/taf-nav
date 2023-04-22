@@ -1,87 +1,105 @@
-export const SETTLEMENTS = {
-  "N.W. Plains Village": 1,
-  "Venice mini": 2,
-  Crossloop: 3,
-  "Abandoned Savanna Village": 4,
-  Gwendolyn: 5,
-  "Plains Village": 6,
-  "Forest Town": 7,
-  "Alte City/Forest Town Docks": 8,
-  "Alte City South/Interchange": 9,
-  "Artificial Island": 10,
-  "Dragon Isle": 11,
-  "1.17 Mine": 12,
-  "Deep S.W. Savanna Village": 13,
-  "Gwendolyn West": 14,
-  "Alte City North": 15,
+export const SETTLEMENTS = { // test set only
+
+  "Mushroom Island Central": 1,
+  "Mushroom Island's Portal": 2,
+  "Laetiaville Central": 3,
+  "Upper Laetiaville": 4,
+  "Laetiaville Southside": 5,
+  "Nether Laetiaville": 6,
+  "Taiga Track": 7,
+  "Wolfbury": 8,
+  "Meadow Hill": 9
 };
 
-export const WAYPOINTS = {
-  "1.17 Mine Port": 16,
-  "Interim Sea": 17,
-  "Loop-River Canal (S)": 18,
-  "North Desert Loop": 19,
-  "West Crossloop Canal": 20,
-  "East Crossloop Canal": 21,
-  "Road Centre East": 22,
-  "Road Centre West": 23,
-  "Road Centre far West": 24,
+export const WAYPOINTS: Record<string,number> = { // currently unused
+
 };
 
 export type SettlementName = keyof typeof SETTLEMENTS;
 export type WaypointName = keyof typeof WAYPOINTS;
 export type PlaceName = SettlementName | WaypointName;
 
-type Connection = [PlaceName, PlaceName, number /*secs*/];
+type Connection = [
+  PlaceName, // start location
+  PlaceName, // end location
+  number // time in seconds
+]; //["", "", /*test time*/], (to copy)
 
-export const RAILWAYS: Connection[] = [
-  ["Gwendolyn", "Forest Town", 32],
-  ["Gwendolyn", "Deep S.W. Savanna Village", 149],
-  ["Plains Village", "Forest Town", 17],
-  ["Forest Town", "Alte City South/Interchange", 11],
-  ["Forest Town", "Deep S.W. Savanna Village", 159],
-];
-//["", "", ], (to copy)
-
-export const WATERWAYS: Connection[] = [
-  ["Interim Sea", "Alte City/Forest Town Docks", 14.48],
-  ["Interim Sea", "Artificial Island", 46.9],
-  ["Dragon Isle", "Artificial Island", 14.74],
-  ["Dragon Isle", "1.17 Mine Port", 39.67],
-  ["Interim Sea", "Loop-River Canal (S)", 46.96],
-  ["Interim Sea", "Loop-River Canal (S)", 55.26],
-  ["Loop-River Canal (S)", "N.W. Plains Village", 34.14],
-  ["N.W. Plains Village", "North Desert Loop", 21.29],
-  ["N.W. Plains Village", "North Desert Loop", 42.61],
-  ["North Desert Loop", "West Crossloop Canal", 223.17],
-  ["West Crossloop Canal", "East Crossloop Canal", 55.87],
-  ["East Crossloop Canal", "Loop-River Canal (S)", 18.96],
-  ["East Crossloop Canal", "Crossloop", 1.96],
-  ["Crossloop", "Abandoned Savanna Village", 27.84],
-  ["Abandoned Savanna Village", "Gwendolyn West", 24.73],
-  ["Gwendolyn West", "Gwendolyn", 5.6],
-  ["West Crossloop Canal", "Venice mini", 23.93],
-  ["Venice mini", "Deep S.W. Savanna Village", 69.6],
+export const OVERBOATWAYS: Connection[] = [
+  ["Laetiaville Central", "Laetiaville Southside", 15/*test time*/],
+  ["Laetiaville Central", "Wolfbury", 30/*test time*/],
+  ["Laetiaville Southside", "Laetiaville Central", 15/*test time*/],
+  ["Wolfbury", "Laetiaville Central", 30/*test time*/]
 ];
 
-type RoadConnection = [
-  PlaceName,
-  PlaceName,
-  number /*walk secs*/,
-  number /* sprint secs */
+export const OVERRAILWAYS: Connection[] = [
+  ["Mushroom Island Central", "Laetiaville Central", 295/*test time*/],
+  ["Laetiaville Central", "Mushroom Island Central", 298.5],
+  ["Laetiaville Central", "Upper Laetiaville", 14.2],
+  ["Laetiaville Central", "Laetiaville Southside", 21.5],
+  ["Laetiaville Central", "Taiga Track", 30/*test time*/],
+  ["Laetiaville Central", "Wolfbury", 40/*test time*/],
+  ["Laetiaville Central", "Meadow Hill", 26.0],
+  ["Upper Laetiaville", "Laetiaville Central", 20.0],
+  ["Upper Laetiaville", "Laetiaville Southside", 23.7],
+  ["Upper Laetiaville", "Taiga Track", 15/*test time*/],
+  ["Upper Laetiaville", "Wolfbury", 25/*test time*/],
+  ["Laetiaville Southside", "Laetiaville Central", 22.7],
+  ["Laetiaville Southside", "Upper Laetiaville", 22.3],
+  ["Taiga Track", "Laetiaville Central", 30/*test time*/],
+  ["Taiga Track", "Upper Laetiaville", 15/*test time*/],
+  ["Taiga Track", "Wolfbury", 12/*test time*/],
+  ["Wolfbury", "Laetiaville Central", 45/*test time*/],
+  ["Wolfbury", "Taiga Track", 12/*test time*/],
+  ["Meadow Hill", "Mushroom Island Central", 270.0],
+  ["Meadow Hill", "Laetiaville Central", 26.9],
+  
+
 ];
 
-export const ROADWAYS: RoadConnection[] = [
-  ["Alte City South/Interchange", "Road Centre East", 7.98, 8.0],
-  ["Road Centre East", "Road Centre West", 32.19, 23.3],
-  ["Road Centre West", "Plains Village", 10.07, 8.19],
-  ["Road Centre West", "Road Centre far West", 17.88, 13.35],
-  ["Road Centre East", "Alte City/Forest Town Docks", 0.46, 0.49],
-  ["Alte City/Forest Town Docks", "Forest Town", 24.99, 19.11],
-  ["Forest Town", "Plains Village", 44.51, 34.39],
-  ["1.17 Mine", "1.17 Mine Port", 52.95, 39.65],
-  ["Road Centre far West", "Crossloop", 66.87, 49.26],
-  ["Road Centre far West", "Gwendolyn West", 23.53, 16.61],
-  ["Gwendolyn West", "Gwendolyn", 24.89, 18.28],
-  ["Alte City North", "Alte City South/Interchange", 22.17, 17.44],
+export const OVERROADWAYS: Connection[] = [
+  ["Laetiaville Central", "Upper Laetiaville", 12/*test time*/],
+  ["Laetiaville Central", "Laetiaville Southside", 25/*test time*/],
+  ["Upper Laetiaville", "Laetiaville Central", 10/*test time*/],
+  ["Upper Laetiaville", "Taiga Track", 30/*test time*/],
+  ["Laetiaville Southside", "Laetiaville Central", 25/*test time*/],
+  ["Laetiaville Southside", "Meadow Hill", 15/*test time*/],
+  ["Taiga Track", "Upper Laetiaville", 32/*test time*/],
+  ["Taiga Track", "Wolfbury", 15/*test time*/],
+  ["Wolfbury", "Taiga Track", 15/*test time*/],
+  ["Meadow Hill", "Laetiaville Southside", 15/*test time*/],
+];
+
+export const NETHERBOATWAYS: Connection[] = [
+
+];
+
+export const NETHERRAILWAYS: Connection[] = [
+  ["Mushroom Island's Portal", "Nether Laetiaville", 25/*test time*/],
+  ["Nether Laetiaville", "Mushroom Island's Portal", 25/*test time*/],
+];
+
+export const NETHERROADWAYS: Connection[] = [
+  ["Mushroom Island's Portal", "Nether Laetiaville", 35/*test time*/],
+  ["Nether Laetiaville", "Mushroom Island's Portal", 35/*test time*/],
+
+];
+
+export const ENDBOATWAYS: Connection[] = [
+
+];
+
+export const ENDRAILWAYS: Connection[] = [
+
+];
+
+export const ENDROADWAYS: Connection[] = [
+
+];
+
+export const TRANSFERS: Connection[] = [
+  ["Mushroom Island Central", "Mushroom Island's Portal", 5],
+  ["Mushroom Island's Portal", "Mushroom Island Central", 5],
+  ["Upper Laetiaville", "Nether Laetiaville", 5],
+  ["Nether Laetiaville", "Upper Laetiaville", 5],
 ];

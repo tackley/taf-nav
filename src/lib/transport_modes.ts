@@ -1,3 +1,4 @@
+import { ToggleSwitch } from "../components/Toggles";
 import { EdgeAttributes } from "../graph";
 
 export type TransportType = EdgeAttributes["type"];
@@ -6,11 +7,11 @@ export function transportMode(m: TransportType): string {
   switch (m) {
     case "railway":
       return "in minecart";
-    case "roadway:sprint":
-      return "sprinting";
-    case "roadway:walk":
+    case "roadway":
       return "walking";
-    case "waterway":
+    case "boatway":
       return "boating";
+    case "transfer":
+      return "transfer";
   }
 }

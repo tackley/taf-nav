@@ -11,18 +11,29 @@ import React from "react";
 import { transportMode, TransportType } from "../lib/transport_modes";
 
 export type ToggleSwitches = {
-  [key in TransportType]: boolean;
+  // adds the switches
+  boatway: boolean;
+  railway: boolean;
+  roadway: boolean;
+  //  sprinting: boolean; // if off do walking
+  //  overworld: boolean;
+  //  nether: boolean;
+  //  end: boolean;
 };
+
+export type ToggleSwitch = keyof ToggleSwitches;
 
 interface Props {
   switches: ToggleSwitches;
-  toggle: (t: TransportType) => void
+  toggle: (t: ToggleSwitch) => void;
 }
 
 export const Toggles: React.FC<Props> = ({ switches, toggle }) => {
-  const Toggle: React.FC<{ t: TransportType }> = ({ t }) => (
+  const Toggle: React.FC<{ t: ToggleSwitch }> = ({ t }) => (
     <FormControlLabel
-      control={<Switch checked={switches[t]} onChange={() => toggle(t)} name={t} />}
+      control={
+        <Switch checked={switches[t]} onChange={() => toggle(t)} name={t} />
+      }
       label={transportMode(t)}
     />
   );
@@ -31,7 +42,7 @@ export const Toggles: React.FC<Props> = ({ switches, toggle }) => {
     <FormControl component="fieldset">
       <FormGroup>
         {Object.keys(switches).map((t) => (
-          <Toggle key={t} t={t as TransportType} />
+          <Toggle key={t} t={t as ToggleSwitch} />
         ))}
       </FormGroup>
     </FormControl>

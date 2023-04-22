@@ -41,10 +41,9 @@ const ContentBox: React.FC<{ title: string; children: React.ReactNode }> = (
 };
 
 const defaultSwitchState: ToggleSwitches = {
-  "roadway:sprint": true,
-  "roadway:walk": true,
+  roadway: true,
   railway: true,
-  waterway: true,
+  boatway: true,
 };
 
 export default function Home() {
@@ -52,7 +51,7 @@ export default function Home() {
   const [to, setTo] = useState<string | null>(null);
   const [switches, setSwitches] = useState<ToggleSwitches>(defaultSwitchState);
 
-  const toggleSwitch = (t: TransportType) => {
+  const toggleSwitch = (t: keyof ToggleSwitches) => {
     setSwitches((s) => ({
       ...s,
       [t]: !s[t],
@@ -61,8 +60,21 @@ export default function Home() {
 
   return (
     <>
-      <Box sx={{ position: "absolute", zIndex: -5, opacity: 0.5 }}>
-        <Image src={MapImage} alt="background map" />
+      <Box
+        sx={{
+          position: "absolute",
+          zIndex: -5,
+          opacity: 0.5,
+          height: "100vh",
+          width: "100vw",
+        }}
+      >
+        <Image
+          fill
+          src={MapImage}
+          alt="background map"
+          style={{ objectFit: "contain" }}
+        />
       </Box>
       <AppBar
         position="sticky"
@@ -74,10 +86,10 @@ export default function Home() {
       >
         <Toolbar>
           <Typography variant="h6" style={{ flexGrow: 1 }}>
-            The TaF Nav
+            AdNav
           </Typography>
           <Typography variant="h6" style={{ color: "blue" }}>
-            Visit Bistro99
+            Visit The Great Giant G
           </Typography>
         </Toolbar>
       </AppBar>
