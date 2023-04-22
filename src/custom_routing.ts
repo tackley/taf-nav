@@ -22,10 +22,13 @@ export function findRoutesWithFilter(start: PlaceName, toggles: ToggleSwitches) 
 
 export function findRoutes(start: PlaceName) {
   return findRoutesWithFilter(start, {
-    "roadway:sprint": true,
-    "roadway:walk": true,
+    roadway: true,
     railway: true,
-    waterway: true
+    boatway: true,
+    sprinting: true,
+    overworld: true,
+    nether: true,
+    end: true
   })
 }
 
@@ -47,7 +50,7 @@ export function findFastestRoutes(graph: RouteGraph, start: PlaceName) {
     const nodeToCheck = q.shift()!;
     const bestRouteToV = dist.get(nodeToCheck)!;
 
-    graph.forEachUndirectedEdge(nodeToCheck, (_, attr, a, b) => {
+    graph.forEachDirectedEdge(nodeToCheck, (_, attr, a, b) => {
       const target = a === nodeToCheck ? b : a;
       const edge: Edge = {
         from: nodeToCheck,
