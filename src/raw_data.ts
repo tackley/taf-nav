@@ -26,48 +26,48 @@ type Connection = [
 ]; //["", "", /*test time*/], (to copy)
 
 export const OVERBOATWAYS: Connection[] = [
-  ["Laetiaville Central", "Laetiaville Southside", 15/*test time*/],
-  ["Laetiaville Central", "Wolfbury", 30/*test time*/],
-  ["Laetiaville Southside", "Laetiaville Central", 15/*test time*/],
-  ["Wolfbury", "Laetiaville Central", 30/*test time*/]
+  ["Laetiaville Central", "Laetiaville Southside", 26.7],
+  ["Laetiaville Central", "Wolfbury", 56.1],
+  ["Laetiaville Southside", "Laetiaville Central", 26.7],
+  ["Wolfbury", "Laetiaville Central", 56.1]
+  
 ];
 
 export const OVERRAILWAYS: Connection[] = [
-  ["Mushroom Island Central", "Laetiaville Central", 295/*test time*/],
+  ["Mushroom Island Central", "Laetiaville Central", 299.4],
   ["Laetiaville Central", "Mushroom Island Central", 298.5],
   ["Laetiaville Central", "Upper Laetiaville", 14.2],
   ["Laetiaville Central", "Laetiaville Southside", 21.5],
-  ["Laetiaville Central", "Taiga Track", 30/*test time*/],
-  ["Laetiaville Central", "Wolfbury", 40/*test time*/],
+  ["Laetiaville Central", "Taiga Track", 44.3],
+  ["Laetiaville Central", "Wolfbury", 59.5],
   ["Laetiaville Central", "Meadow Hill", 26.0],
   ["Upper Laetiaville", "Laetiaville Central", 20.0],
   ["Upper Laetiaville", "Laetiaville Southside", 23.7],
-  ["Upper Laetiaville", "Taiga Track", 15/*test time*/],
-  ["Upper Laetiaville", "Wolfbury", 25/*test time*/],
+  ["Upper Laetiaville", "Taiga Track", 30.3],
+  ["Upper Laetiaville", "Wolfbury", 42.3],
   ["Laetiaville Southside", "Laetiaville Central", 22.7],
   ["Laetiaville Southside", "Upper Laetiaville", 22.3],
-  ["Taiga Track", "Laetiaville Central", 30/*test time*/],
-  ["Taiga Track", "Upper Laetiaville", 15/*test time*/],
-  ["Taiga Track", "Wolfbury", 12/*test time*/],
-  ["Wolfbury", "Laetiaville Central", 45/*test time*/],
-  ["Wolfbury", "Taiga Track", 12/*test time*/],
+  ["Taiga Track", "Laetiaville Central", 38.4],
+  ["Taiga Track", "Upper Laetiaville", 30.3],
+  ["Taiga Track", "Wolfbury", 18.4],
+  ["Wolfbury", "Laetiaville Central", 53.9],
+  ["Wolfbury", "Taiga Track", 18.5],
   ["Meadow Hill", "Mushroom Island Central", 270.0],
   ["Meadow Hill", "Laetiaville Central", 26.9],
   
-
 ];
 
 export const OVERROADWAYS: Connection[] = [
-  ["Laetiaville Central", "Upper Laetiaville", 12/*test time*/],
-  ["Laetiaville Central", "Laetiaville Southside", 25/*test time*/],
-  ["Upper Laetiaville", "Laetiaville Central", 10/*test time*/],
-  ["Upper Laetiaville", "Taiga Track", 30/*test time*/],
-  ["Laetiaville Southside", "Laetiaville Central", 25/*test time*/],
-  ["Laetiaville Southside", "Meadow Hill", 15/*test time*/],
-  ["Taiga Track", "Upper Laetiaville", 32/*test time*/],
-  ["Taiga Track", "Wolfbury", 15/*test time*/],
-  ["Wolfbury", "Taiga Track", 15/*test time*/],
-  ["Meadow Hill", "Laetiaville Southside", 15/*test time*/],
+  ["Laetiaville Central", "Upper Laetiaville", 9.5],
+  ["Laetiaville Central", "Laetiaville Southside", 19.6],
+  ["Upper Laetiaville", "Laetiaville Central", 7.7],
+  ["Upper Laetiaville", "Taiga Track", 30.3],
+  ["Laetiaville Southside", "Laetiaville Central", 25.3],
+  ["Laetiaville Southside", "Meadow Hill", 29.5],
+  ["Taiga Track", "Upper Laetiaville", 38.6],
+  ["Taiga Track", "Wolfbury", 24.1],
+  ["Wolfbury", "Taiga Track", 24.1],
+  ["Meadow Hill", "Laetiaville Southside", 31.2],
 ];
 
 export const NETHERBOATWAYS: Connection[] = [
@@ -75,13 +75,14 @@ export const NETHERBOATWAYS: Connection[] = [
 ];
 
 export const NETHERRAILWAYS: Connection[] = [
-  ["Mushroom Island's Portal", "Nether Laetiaville", 25/*test time*/],
-  ["Nether Laetiaville", "Mushroom Island's Portal", 25/*test time*/],
+  ["Mushroom Island's Portal", "Nether Laetiaville", 42.3],
+  ["Nether Laetiaville", "Mushroom Island's Portal", 42.3],
+
 ];
 
 export const NETHERROADWAYS: Connection[] = [
-  ["Mushroom Island's Portal", "Nether Laetiaville", 35/*test time*/],
-  ["Nether Laetiaville", "Mushroom Island's Portal", 35/*test time*/],
+  ["Mushroom Island's Portal", "Nether Laetiaville", 51.2],
+  ["Nether Laetiaville", "Mushroom Island's Portal", 51.2],
 
 ];
 
