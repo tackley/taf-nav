@@ -39,7 +39,7 @@ export function findFastestRoutes(graph: RouteGraph, start: PlaceName) {
         n,
         { route: [], totalDurationSecs: n === start ? 0 : Infinity },
       ])
-  );
+  );      
 
   let q = graph.nodes();
 
@@ -49,10 +49,9 @@ export function findFastestRoutes(graph: RouteGraph, start: PlaceName) {
     const nodeToCheck = q.shift()!;
     const bestRouteToV = dist.get(nodeToCheck)!;
 
-    graph.forEachDirectedEdge(nodeToCheck, (_, attr, a, b) => {
-      const target = a === nodeToCheck ? b : a;
+    graph.forEachDirectedEdge(nodeToCheck, (_, attr, src, target) => {
       const edge: Edge = {
-        from: nodeToCheck,
+        from: src,
         to: target,
         ...attr,
       };

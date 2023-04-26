@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 import _ from "lodash";
-import React, { useMemo } from "react";
+import React, { Fragment, useMemo } from "react";
 import { findRoutes, findRoutesWithFilter } from "../custom_routing";
 import { PlaceName } from "../raw_data";
 import { LocationCity } from "@mui/icons-material";
@@ -60,7 +60,7 @@ export const DisplayRoute = (props: Props) => {
           <ListItemText primary={from} secondary="starting location" />
         </ListItem>
         {bestRoute.route.map((r, idx) => (
-          <>
+          <Fragment key={idx}>
             <ListItem key={`${idx}-route`}>
               <ListItemText
                 primary={`${r.durationSecs} seconds ${transportMode(
@@ -74,7 +74,7 @@ export const DisplayRoute = (props: Props) => {
               </ListItemIcon>
               <ListItemText primary={`${r.to}`} />
             </ListItem>
-          </>
+          </Fragment>
         ))}
       </List>
     </>
