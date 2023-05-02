@@ -73,7 +73,7 @@ export default function Home() {
           fill
           src={MapImage}
           alt="background map"
-          style={{ objectFit: "contain" }}
+          style={{ objectFit: "cover" }}
         />
       </Box>
       <AppBar
