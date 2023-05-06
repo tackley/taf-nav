@@ -33,10 +33,7 @@ export function buildGraph(toggles: ToggleSwitches): RouteGraph {
     multi: true,
   });
 
-  const overworld = true;
-  const nether = true;
-  const end = true;
-  const sprinting = false;
+  const roadwaySpeedMultiplier = toggles.sprinting ? 1.0 : 1.2;
 
   // Places
   Object.entries(SETTLEMENTS).forEach(([k, v]) => {
@@ -47,95 +44,74 @@ export function buildGraph(toggles: ToggleSwitches): RouteGraph {
   });
 
   // Overworld Boatways
-  if (toggles.boatway && overworld) {
+  if (toggles.boatway && toggles.overworld) {
     OVERBOATWAYS.forEach(([a, b, durationSecs]) => {
       g.addEdge(a, b, { type: "boatway", durationSecs: durationSecs });
     });
   }
 
   // Overworld Railways
-  if (toggles.railway && overworld) {
+  if (toggles.railway && toggles.overworld) {
     OVERRAILWAYS.forEach(([a, b, durationSecs]) => {
       g.addEdge(a, b, { type: "railway", durationSecs: durationSecs });
     });
   }
 
   // Overworld Roadways
-  if (toggles.roadway && overworld) {
+  if (toggles.roadway && toggles.overworld) {
     OVERROADWAYS.forEach(([a, b, durationSecs]) => {
-      if (sprinting) {
-        g.addEdge(a, b, {
-          type: "roadway",
-          durationSecs: durationSecs,
-        });
-      } else {
-        g.addEdge(a, b, {
-          type: "roadway",
-          durationSecs: durationSecs * 1.2,
-        });
-      }
+      g.addEdge(a, b, {
+        type: "roadway",
+        durationSecs: durationSecs * roadwaySpeedMultiplier,
+      });
     });
   }
 
   // Nether Boatways
-  if (toggles.boatway && nether) {
+  if (toggles.boatway && toggles.nether) {
     NETHERBOATWAYS.forEach(([a, b, durationSecs]) => {
       g.addEdge(a, b, { type: "boatway", durationSecs: durationSecs });
     });
   }
 
   // Nether Railways
-  if (toggles.railway && nether) {
+  if (toggles.railway && toggles.nether) {
     NETHERRAILWAYS.forEach(([a, b, durationSecs]) => {
       g.addEdge(a, b, { type: "railway", durationSecs: durationSecs });
     });
   }
 
   // Nether Roadways
-  if (toggles.roadway && nether) {
+  if (toggles.roadway && toggles.nether) {
     NETHERROADWAYS.forEach(([a, b, durationSecs]) => {
-      if (sprinting) {
-        g.addEdge(a, b, {
-          type: "roadway",
-          durationSecs: durationSecs,
-        });
-      } else {
-        g.addEdge(a, b, {
-          type: "roadway",
-          durationSecs: durationSecs * 1.2,
-        });
-      }
+      g.addEdge(a, b, {
+        type: "roadway",
+        durationSecs: durationSecs * roadwaySpeedMultiplier,
+      });
     });
   }
 
   // End Boatways
-  if (toggles.boatway && end) {
+  if (toggles.boatway && toggles.end) {
     ENDBOATWAYS.forEach(([a, b, durationSecs]) => {
       g.addEdge(a, b, { type: "boatway", durationSecs: durationSecs });
     });
   }
 
   // End Railways
-  if (toggles.railway && end) {
+  if (toggles.railway && toggles.end) {
     ENDRAILWAYS.forEach(([a, b, durationSecs]) => {
       g.addEdge(a, b, { type: "railway", durationSecs: durationSecs });
     });
   }
 
   // End Roadways
-  if (toggles.roadway && end) {
+  if (toggles.roadway && toggles.end) {
     ENDROADWAYS.forEach(([a, b, durationSecs]) => {
-      if (sprinting) {
-        g.addEdge(a, b, {
-          type: "roadway",
-          durationSecs: durationSecs,
-        });
-      } else {
-        g.addEdge(a, b, {
-          type: "roadway",
-          durationSecs: durationSecs * 1.2,
-        });
-      }
+      g.addEdge(a, b, {
+        type: "roadway",
+        durationSecs: durationSecs * roadwaySpeedMultiplier,
+      });
     });
   }
 

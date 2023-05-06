@@ -23,14 +23,6 @@ export function findRoutesWithFilter(
   return findFastestRoutes(g, start);
 }
 
-export function findRoutes(start: PlaceName) {
-  return findRoutesWithFilter(start, {
-    roadway: true,
-    railway: true,
-    boatway: true,
-  });
-}
-
 export function findFastestRoutes(graph: RouteGraph, start: PlaceName) {
   const dist = new Map<NodeIdentifier, BestRoute>(
     graph
@@ -39,7 +31,7 @@ export function findFastestRoutes(graph: RouteGraph, start: PlaceName) {
         n,
         { route: [], totalDurationSecs: n === start ? 0 : Infinity },
       ])
-  );      
+  );
 
   let q = graph.nodes();
 

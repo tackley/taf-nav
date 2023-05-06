@@ -8,20 +8,24 @@ import {
   Switch,
 } from "@mui/material";
 import React from "react";
-import { transportMode, TransportType } from "../lib/transport_modes";
 
 export type ToggleSwitches = {
   // adds the switches
   boatway: boolean;
   railway: boolean;
   roadway: boolean;
-  //  sprinting: boolean; // if off do walking
-  //  overworld: boolean;
-  //  nether: boolean;
-  //  end: boolean;
+  overworld: boolean;
+  nether: boolean;
+  end: boolean;
+
+  sprinting: boolean; // if off do walking
 };
 
 export type ToggleSwitch = keyof ToggleSwitches;
+
+function toggleLabel(t: ToggleSwitch): string {
+  return `${t}`;
+}
 
 interface Props {
   switches: ToggleSwitches;
@@ -34,7 +38,7 @@ export const Toggles: React.FC<Props> = ({ switches, toggle }) => {
       control={
         <Switch checked={switches[t]} onChange={() => toggle(t)} name={t} />
       }
-      label={transportMode(t)}
+      label={toggleLabel(t)}
     />
   );
 

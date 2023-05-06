@@ -44,6 +44,10 @@ const defaultSwitchState: ToggleSwitches = {
   roadway: true,
   railway: true,
   boatway: true,
+  end: true,
+  nether: true,
+  overworld: true,
+  sprinting: true,
 };
 
 export default function Home() {
