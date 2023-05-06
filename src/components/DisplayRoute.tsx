@@ -7,10 +7,9 @@ import {
 } from "@mui/material";
 import _ from "lodash";
 import React, { Fragment, useMemo } from "react";
-import { findRoutes, findRoutesWithFilter } from "../custom_routing";
+import { findRoutesWithFilter } from "../custom_routing";
 import { PlaceName } from "../raw_data";
 import { LocationCity } from "@mui/icons-material";
-import { EdgeAttributes } from "../graph";
 import { transportMode } from "../lib/transport_modes";
 import { ToggleSwitches } from "./Toggles";
 
