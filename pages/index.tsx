@@ -7,14 +7,14 @@ import {
   Toolbar,
   Typography,
   alpha,
+  hexToRgb,
+  rgbToHex,
 } from "@mui/material";
 
 import React, { useState } from "react";
 import { CityList } from "../src/components/CityList";
 import { DisplayRoute } from "../src/components/DisplayRoute";
 import { Toggles, ToggleSwitches } from "../src/components/Toggles";
-import { TransportType } from "../src/lib/transport_modes";
-import Image from "next/image";
 import MapImage from "../src/assets/map.png";
 
 /*
@@ -63,23 +63,7 @@ export default function Home() {
   };
 
   return (
-    <>
-      <Box
-        sx={{
-          position: "absolute",
-          zIndex: -5,
-          opacity: 0.5,
-          height: "100vh",
-          width: "100vw",
-        }}
-      >
-        <Image
-          fill
-          src={MapImage}
-          alt="background map"
-          style={{ objectFit: "cover" }}
-        />
-      </Box>
+    <Box sx={{backgroundImage: `url(${MapImage.src})`, backgroundColor: "blue"}} id="LAETIAVILLE">
       <AppBar
         position="sticky"
         color="transparent"
@@ -119,6 +103,6 @@ export default function Home() {
           </Grid>
         </Box>
       </Container>
-    </>
+    </Box>
   );
 }

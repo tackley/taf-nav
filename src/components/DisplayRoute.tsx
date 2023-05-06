@@ -63,7 +63,7 @@ export const DisplayRoute = (props: Props) => {
             <ListItem key={`${idx}-route`}>
               <ListItemText
                 primary={`${r.durationSecs} seconds ${transportMode(
-                  r.type
+                  r.type, toggles
                 )} to...`}
               />
             </ListItem>
