@@ -2,7 +2,11 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:js-app",
-    ":semanticCommitsDisabled"
+    ":semanticCommits",
+    ":automergeTypes",
+    ":automergeTesters",
+    ":automergeLinters",
+    "npm:unpublishSafe"
   ],
   "labels": [
     "dependencies"
