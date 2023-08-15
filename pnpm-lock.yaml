@@ -21,8 +21,8 @@ dependencies:
     specifier: 4.14.197
     version: 4.14.197
   graphology:
-    specifier: 0.25.1
-    version: 0.25.1(graphology-types@0.24.7)
+    specifier: 0.25.4
+    version: 0.25.4(graphology-types@0.24.7)
   graphology-types:
     specifier: 0.24.7
     version: 0.24.7
@@ -1727,8 +1727,8 @@ packages:
     resolution: {integrity: sha512-tdcqOOpwArNjEr0gNQKCXwaNCWnQJrog14nJNQPeemcLnXQUUGrsCWpWkVKt46zLjcS6/KGoayeJfHHyPDlvwA==}
     dev: false
 
-  /graphology@0.25.1(graphology-types@0.24.7):
-    resolution: {integrity: sha512-yYA7BJCcXN2DrKNQQ9Qf22zBHm/yTbyBR71T1MYBbGtywNHsv0QZtk8zaR6zxNcp2hCCZayUkHp9DyMSZCpoxQ==}
+  /graphology@0.25.4(graphology-types@0.24.7):
+    resolution: {integrity: sha512-33g0Ol9nkWdD6ulw687viS8YJQBxqG5LWII6FI6nul0pq6iM2t5EKquOTFDbyTblRB3O9I+7KX4xI8u5ffekAQ==}
     peerDependencies:
       graphology-types: '>=0.24.0'
     dependencies:

@@ -15,7 +15,7 @@
     "@mui/icons-material": "5.11.16",
     "@mui/material": "5.12.3",
     "@types/lodash": "4.14.197",
-    "graphology": "0.25.1",
+    "graphology": "0.25.4",
     "graphology-types": "0.24.7",
     "immer": "10.0.2",
     "lodash": "4.17.21",
